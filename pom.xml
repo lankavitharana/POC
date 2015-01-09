@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <properties>
+        <JDK_VERSION>1.6</JDK_VERSION>
+        <POC_VERSION>1.0-SNAPSHOT</POC_VERSION>
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
+
+
+    <groupId>com.wso2.carbon.dataService.poc</groupId>
+    <artifactId>expression-evaluator</artifactId>
+    <version>${POC_VERSION}</version>
+    <packaging>jar</packaging>
+    <name>Expression Evaluator</name>
+
+    <build>
+        <plugins>
+
+	<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>javacc-maven-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>javacc</id>
+            <goals>
+              <goal>javacc</goal>
+            </goals>
+            <configuration>
+              <lookAhead>2</lookAhead>
+              <isStatic>false</isStatic>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>${JDK_VERSION}</source>
+                    <target>${JDK_VERSION}</target>
+                    <excludes>
+
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.wso2.training.axis2.client.ClientTest</mainClass>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+           
+        </plugins>
+
+    </build>
+
+</project>
